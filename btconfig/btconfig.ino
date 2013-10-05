@@ -7,6 +7,7 @@
 	and the configuration process will start. Finished the configuration process, the LED will start blinking.
 
 	** Configuration must be done with the module in a non-paired state **
+	http://elecfreaks.com/store/download/datasheet/Bluetooth/HC-0305%20serail%20module%20AT%20commamd%20set%20201104%20revised.pdf
 */
  
  
@@ -14,7 +15,7 @@
     char ssid[10]        = "Linvor05";    // BT module name
     char baudios         = '4';           // 1=>1200 baudios, 2=>2400, 3=>4800, 4=>9600 (default), 5=>19200, 6=>38400, 7=>57600, 8=>115200
     char password[10]    = "0000";        // Pairing password for the BT module
- 
+    char role		 = '0';		  // 0=>Slave role; 1=>Master role
  
 void setup()
 {
@@ -38,7 +39,11 @@ void setup()
             Serial.print("AT+BAUD"); Serial.print(baudios); delay(1000);
  
         // Password adjust:
-            Serial.print("AT+PIN"); Serial.print(password); delay(1000);    
+            Serial.print("AT+PIN"); Serial.print(password); delay(1000);
+            
+        //Role adjust:
+//            Serial.print("AT+ROLE"); Serial.print(role); delay(1000);
+            
 }
  
 void loop()
